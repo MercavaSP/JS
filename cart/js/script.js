@@ -1,6 +1,7 @@
 window.addEventListener('DOMContentLoaded', function(){
+//  Adding cart to website
   let products = document.querySelectorAll('.product'),
-      butttons = document.querySelectorAll('button'),
+      buttons = document.querySelectorAll('button'),
       openBtn = document.querySelector('.open');
 
 
@@ -25,6 +26,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
   createCart();
 
+  // Adding functional buttons to cart Open and Close cart
   let field = document.querySelector('.cart-field'),
       cart = document.querySelector('.cart'),
       close = document.querySelector('.close');
@@ -38,5 +40,31 @@ window.addEventListener('DOMContentLoaded', function(){
 
   openBtn.addEventListener('click', openCart);
   close.addEventListener('click', closeCart);
+
+// adding functional items. add to cart.
+
+  // for (let i = 0; i < buttons.lenght; i++) {
+  //   buttons[i].addEventListener('click', function() {
+  //     let item = products[i].cloneNode(true),
+  //         btn = item.querySelector('button');
+      
+  //     btn.remove();
+  //     field.appendChild(item);
+  //     products[i].remove();
+  //   });
+  // }
+
+
+  buttons.forEach(function(item, i) {
+    item.addEventListener('click', function() {
+      let item = products[i].cloneNode(true),
+          btn = item.querySelector('button');
+      
+      btn.remove();
+      field.appendChild(item);
+      products[i].remove();
+    });
+  
+  });
 });
 
